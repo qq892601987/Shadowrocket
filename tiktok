@@ -79,7 +79,7 @@ DOMAIN-SUFFIX,tiktokv.us,Proxy
 DOMAIN-SUFFIX,ttwebview.com,Proxy
 DOMAIN-KEYWORD,musical.ly,Proxy
 DOMAIN-KEYWORD,tiktok,Proxy
-PROCESS-NAME,com.zhiliaoapp.musically,Pr
+PROCESS-NAME,com.zhiliaoapp.musically,Proxy
 # 85（可能冗余）
 DOMAIN-SUFFIX,www-google-analytics.l.google.com,Proxy
 DOMAIN-SUFFIX,ssl-google-analytics.l.google.com,Proxy
