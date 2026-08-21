@@ -590,6 +590,44 @@ DOMAIN-SUFFIX,ampproject.org,PROXY # Google AMP issue#237
   - IP-CIDR,54.235.23.242/32
   - IP-CIDR,54.93.124.31/32
   - IP-ASN,32934
+
+#tiktok
+DOMAIN-SUFFIX,bytedapm.com,REJECT
+DOMAIN-SUFFIX,muscdn.com,REJECT
+DOMAIN-SUFFIX,musical.ly,REJECT
+DOMAIN-SUFFIX,tik-tokapi.com,REJECT
+DOMAIN-SUFFIX,tiktok-minis.com,REJECT
+DOMAIN-SUFFIX,tiktok-row.net,REJECT
+DOMAIN-SUFFIX,tiktok.com,REJECT
+DOMAIN-SUFFIX,tiktokcdn-eu.com,REJECT
+DOMAIN-SUFFIX,tiktokcdn-us.com,REJECT
+DOMAIN-SUFFIX,tiktokcdn.com,REJECT
+DOMAIN-SUFFIX,tiktokd.net,REJECT
+DOMAIN-SUFFIX,tiktokd.org,REJECT
+DOMAIN-SUFFIX,tiktokeu-cdn.com,REJECT
+DOMAIN-SUFFIX,tiktokglobalshopv.com,REJECT
+DOMAIN-SUFFIX,tiktokminis.us,REJECT
+DOMAIN-SUFFIX,tiktokrow-cdn.com,REJECT
+DOMAIN-SUFFIX,tiktokv.com,REJECT
+DOMAIN-SUFFIX,tiktokv.eu,REJECT
+DOMAIN-SUFFIX,tiktokv.us,REJECT
+DOMAIN-SUFFIX,tiktokw.eu,REJECT
+DOMAIN-SUFFIX,tiktokw.us,REJECT
+DOMAIN-SUFFIX,ttcdn-us.com,REJECT
+DOMAIN-SUFFIX,ttlivecdn.com,REJECT
+DOMAIN-SUFFIX,ttoverseaus.net,REJECT
+DOMAIN-SUFFIX,ttwstatic.com,REJECT
+DOMAIN-SUFFIX,tiktokcdn-us.com.edgesuite.net,REJECT
+DOMAIN-SUFFIX,tiktokcdn.com.akamaized.net,REJECT
+DOMAIN-SUFFIX,tiktokcdn.com.edgesuite.net,REJECT
+DOMAIN-SUFFIX,tiktokv.com.edgekey.net,REJECT
+DOMAIN-SUFFIX,tiktokv.com.edgesuite.net,REJECT
+DOMAIN,p16-tiktokcdn-com.akamaized.net,REJECT
+DOMAIN,roovza-launches.appsflyersdk.com,REJECT
+DOMAIN,roovza.inapps.appsflyersdk.com,REJECT
+DOMAIN,roovza.launches.appsflyersdk.com,REJECT
+DOMAIN,roovza.skadsdk.appsflyersdk.com,REJECT
+DOMAIN-SUFFIX,analytics.tiktok.com,REJECT
 # TED
 DOMAIN-SUFFIX,tedcdn.com,Proxy
 # Telegram
