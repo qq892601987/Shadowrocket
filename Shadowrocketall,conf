@@ -1,0 +1,281 @@
+# =========================================================
+# Shadowrocket
+# 基于已验证不泄漏配置
+#
+# 国内判断：ACL4SSR
+# 海外业务识别：MetaCubeX
+# 业务组：直接手动选择实际节点
+# 不建立地区节点组
+# =========================================================
+
+
+[General]
+
+bypass-system = true
+
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, captive.apple.com
+
+tun-excluded-routes = 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/16, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 255.255.255.255/32, 239.255.255.250/32
+
+dns-server = system
+
+ipv6 = false
+prefer-ipv6 = false
+
+dns-fallback-system = false
+dns-direct-system = false
+
+icmp-auto-reply = true
+always-reject-url-rewrite = false
+
+private-ip-answer = true
+
+dns-direct-fallback-proxy = true
+
+
+
+# =========================================================
+# 业务策略组
+#
+# 每个组：
+# - PROXY = 跟随 Shadowrocket 当前默认节点
+# - 也可以直接从实际节点列表里手动选择
+#
+# 不建立香港/日本/美国等二级节点组
+# =========================================================
+
+[Proxy Group]
+
+AI工具 = select,PROXY,policy-regex-filter=.*
+
+Claude = select,PROXY,policy-regex-filter=.*
+
+Telegram = select,PROXY,policy-regex-filter=.*
+
+社交通讯 = select,PROXY,policy-regex-filter=.*
+
+流媒体 = select,PROXY,policy-regex-filter=.*
+
+YouTube = select,PROXY,policy-regex-filter=.*
+
+Google = select,PROXY,policy-regex-filter=.*
+
+Crypto = select,PROXY,policy-regex-filter=.*
+
+GitHub = select,PROXY,policy-regex-filter=.*
+
+Amazon = select,PROXY,policy-regex-filter=.*
+
+Apple = select,PROXY,policy-regex-filter=.*
+
+Microsoft = select,PROXY,policy-regex-filter=.*
+
+
+
+[Rule]
+
+
+# =========================================================
+# 01. AI
+# MetaCubeX 只负责识别，不负责 DIRECT
+# =========================================================
+
+# OpenAI / ChatGPT
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/openai.list,AI工具
+
+# Gemini
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/google-gemini.list,AI工具
+
+# Meta AI
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/meta.list,AI工具
+
+# Perplexity
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/perplexity.list,AI工具
+
+
+# =========================================================
+# 02. Claude
+# 独立组，方便固定一个干净 IP 节点
+# =========================================================
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/anthropic.list,Claude
+
+
+# =========================================================
+# 03. Telegram
+# =========================================================
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/telegram.list,Telegram
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/classical/telegram.list,Telegram,no-resolve
+
+
+# =========================================================
+# 04. 社交通讯
+# =========================================================
+
+# X / Twitter
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/x.list,社交通讯
+
+# WhatsApp
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/whatsapp.list,社交通讯
+
+# Facebook
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/facebook.list,社交通讯
+
+# TikTok
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/tiktok.list,社交通讯
+
+# Reddit
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/reddit.list,社交通讯
+
+
+# =========================================================
+# 05. GitHub
+# =========================================================
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/github.list,GitHub
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/github-copilot.list,GitHub
+
+
+# =========================================================
+# 06. Amazon
+# =========================================================
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/amazon.list,Amazon
+
+
+# =========================================================
+# 07. Microsoft
+# =========================================================
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/microsoft.list,Microsoft
+
+
+# =========================================================
+# 08. Crypto
+# =========================================================
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/okx.list,Crypto
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/bybit.list,Crypto
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/binance.list,Crypto
+
+
+# =========================================================
+# 09. YouTube
+# =========================================================
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/youtube.list,YouTube
+
+
+# =========================================================
+# 10. 流媒体
+# =========================================================
+
+# Netflix Domain
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/netflix.list,流媒体
+
+# Netflix IP
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/classical/netflix.list,流媒体,no-resolve
+
+# Disney+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/disney.list,流媒体
+
+# HBO / Max
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/hbo.list,流媒体
+
+# Spotify
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/spotify.list,流媒体
+
+
+# =========================================================
+# 11. Google
+# =========================================================
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/google.list,Google
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/classical/google.list,Google,no-resolve
+
+
+# =========================================================
+# 12. Apple Global
+#
+# 注意：
+# 这里只处理完整 Apple 海外规则。
+# 暂时不加入 MetaCubeX apple-cn,DIRECT，
+# 避免重新引入 MetaCubeX 国内 DIRECT 判断变量。
+# =========================================================
+
+RULE-SET,https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/apple.list,Apple
+
+
+
+# =========================================================
+# 13. 以下开始完全保持你原本已经验证稳定的
+# ACL4SSR 国内判断
+# =========================================================
+
+
+# Local / LAN
+RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list,DIRECT
+
+
+# UnBan
+RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list,DIRECT
+
+
+# China Domain
+RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list,DIRECT
+
+
+# China Media
+RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list,DIRECT
+
+
+# =========================================================
+# 14. 广告
+# =========================================================
+
+RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list,REJECT
+
+RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list,REJECT
+
+
+# =========================================================
+# 15. China IP
+# =========================================================
+
+RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list,DIRECT
+
+RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list,DIRECT
+
+
+# =========================================================
+# 16. GEOIP
+# =========================================================
+
+GEOIP,CN,DIRECT,no-resolve
+
+
+# =========================================================
+# 17. Final
+# =========================================================
+
+FINAL,PROXY
+
+
+
+[Host]
+
+localhost = 127.0.0.1
+
+
+
+[URL Rewrite]
+
+^https?://(www.)?g.cn https://www.google.com 302
+
+^https?://(www.)?google.cn https://www.google.com 302
